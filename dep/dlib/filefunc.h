@@ -6,10 +6,17 @@
 #define SLASH L"/"
 #endif
 
+#define DOT L"."
+
 #include "stringfunc.h"
+#include <fstream>
+#include <sys/stat.h>
 
 // Returns whether the given file exists.
 bool fileExists(wstring filename);
+
+// Returns the size of the given file, in bytes (-1 if something went wrong).
+int fileGetSize(wstring filename);
 
 // Returns the name of the file, without the path.
 wstring fileGetName(wstring filename);
@@ -24,10 +31,7 @@ wstring fileGetDirectory(wstring filename);
 wstring fileGetExtension(wstring filename);
 
 // Returns the filename with the new extension (extension must include the leading dot).
-wstring fileSetExtension(wstring filename, string ext);
-
-// Returns the filename without an extension.
-wstring fileRemoveExtension(wstring filename);
+wstring fileSetExtension(wstring filename, wstring ext);
 
 // Returns whether the given directory exists.
 bool directoryExists(wstring directory);

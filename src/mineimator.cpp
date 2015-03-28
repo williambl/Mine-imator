@@ -47,11 +47,18 @@ int main() {
 	//wstring fn = dialogSaveFile(L"\"My Title\"", L"", formats);
 
 	wcout << "fn = " << fn[0] << endl;
+	wcout << "fileExists(fn) = " << fileExists(fn[0]) << endl;
+	wcout << "fileExists(fn + \"2\") = " << fileExists(fn[0] + L"2") << endl;
+	wcout << "fileGetSize(fn) = " << fileGetSize(fn[0]) << endl;
 	wcout << "fileGetName(fn) = " << fileGetName(fn[0]) << endl;
 	wcout << "fileGetPath(fn) = " << fileGetPath(fn[0]) << endl;
 	wcout << "fileGetDirectory(fn) = " << fileGetDirectory(fn[0]) << endl;
+	wcout << "fileGetExtension(fn) = " << fileGetExtension(fn[0]) << endl;
+	wcout << "fileSetExtension(fn, \".ext\") = " << fileSetExtension(fn[0], L".ext") << endl;
+	wcout << "directoryExists(fileGetDirectory(fn)) = " << directoryExists(fileGetDirectory(fn[0])) << endl;
+	wcout << "directoryExists(fn) = " << directoryExists(fn[0]) << endl;
 
-	Image myImage(fn[0]); // bleh!!
+	Image myImage(fn[0]);
 	cout << myImage.width << "x" << myImage.height << endl;
 	
 	while (!glfwWindowShouldClose(window)) {
