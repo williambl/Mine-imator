@@ -1,7 +1,7 @@
 ﻿#include "mineimator.h"
 
 int main() {
-	zip_fileinfo zfi;
+	/*zip_fileinfo zfi;
 	zipFile zf = zipOpen("myarch.zip", APPEND_STATUS_CREATE);
 	int ret = zipOpenNewFileInZip(zf,
 								  "myfile.txt",
@@ -13,7 +13,7 @@ int main() {
 								  Z_NO_COMPRESSION
 								  );
 	zipCloseFileInZip(zf);
-	zipClose(zf, "my comment for exterior file");
+	zipClose(zf, "my comment for exterior file");*/
 
 	GLFWwindow* window;
 	glfwSetErrorCallback(errorCallback);
@@ -40,13 +40,18 @@ int main() {
 	formats.push_back(L"*.png");
 	formats.push_back(L"JPG files (*.jpg)");
 	formats.push_back(L"*.jpg;*.jpeg");
+	formats.push_back(L"All files (*.*)");
+	formats.push_back(L"*.*");
 
-	//wstring_list fn = dialogOpenFile(L"\"My Title\"", L"", formats, true);
+	wstring_list fn = dialogOpenFile(L"\"My Title\"", L"", formats, true);
+	//wstring fn = dialogSaveFile(L"\"My Title\"", L"", formats);
 
-	wstring fn = dialogSaveFile(L"\"My Title\"", L"", formats);
-	wcout << "File: " << fn << endl;
+	wcout << "fn = " << fn[0] << endl;
+	wcout << "fileGetName(fn) = " << fileGetName(fn[0]) << endl;
+	wcout << "fileGetPath(fn) = " << fileGetPath(fn[0]) << endl;
+	wcout << "fileGetDirectory(fn) = " << fileGetDirectory(fn[0]) << endl;
 
-	Image myImage(fn); // bleh!!
+	Image myImage(fn[0]); // bleh!!
 	cout << myImage.width << "x" << myImage.height << endl;
 	
 	while (!glfwWindowShouldClose(window)) {

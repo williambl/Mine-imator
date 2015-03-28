@@ -9,7 +9,7 @@
 #include <GLFW/glfw3.h>
 //#include <glew.h>
 #include <SOIL.h>
-#include "filedialog.h"
+#include "dlib.h"
 #include "zlib.h"
 #include "zip.h"
 

@@ -1,4 +1,4 @@
-#include "filedialog.h"
+#include "dialogfunc.h"
 
 #ifndef _WIN32
 
@@ -46,6 +46,7 @@ wstring_list dialogOpenFile(wstring title, wstring location, wstring_list filter
 	filterString += L'\0';
 
 	ofn.lpstrFilter = &filterString[0];
+	ofn.nFilterIndex = 0;
 	ofn.lpstrInitialDir = &location[0];
 	ofn.lpstrTitle = &title[0];
 
@@ -208,6 +209,7 @@ wstring dialogSaveFile(wstring title, wstring location, wstring_list filters) {
 	filterString += L'\0';
 
 	ofn.lpstrFilter = &filterString[0];
+	ofn.nFilterIndex = 0;
 	ofn.lpstrInitialDir = &location[0];
 	ofn.lpstrTitle = &title[0];
 

@@ -1,9 +1,9 @@
 #pragma once
 
 #ifdef _WIN32
-#define SLASH "\\"
+#define SLASH L"\\"
 #else
-#define SLASH "/"
+#define SLASH L"/"
 #endif
 
 #include "stringfunc.h"
