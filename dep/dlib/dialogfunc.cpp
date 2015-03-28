@@ -29,7 +29,7 @@ wstring_list dialogOpenFile(wstring title, wstring location, wstring_list filter
 
 #ifdef _WIN32 // Windows
 	
-	wstring filterString = L"";
+	wstring filterString = L"", defaultExt = wstringSplit(filters[1], L';')[0];
 	wchar_t buf[MAX_MULTIPLE * MAX_FILENAME];
 	OPENFILENAMEW ofn;
 
@@ -58,6 +58,8 @@ wstring_list dialogOpenFile(wstring title, wstring location, wstring_list filter
 	ofn.nMaxFileTitle = _MAX_FNAME + _MAX_EXT;
 	ofn.lpstrCustomFilter = NULL;
 	ofn.lpstrDefExt = NULL;
+	if (defaultExt != L".*")
+		ofn.lpstrDefExt = &defaultExt[0];
 	
 	if (!GetOpenFileNameW(&ofn))
 		return selFiles; // Cancel
@@ -192,7 +194,7 @@ wstring dialogSaveFile(wstring title, wstring location, wstring_list filters) {
 
 #ifdef _WIN32
 
-	wstring filterString = L"";
+	wstring filterString = L"", defaultExt = wstringSplit(filters[1], L';')[0];
 	wchar_t buf[MAX_FILENAME];
 	OPENFILENAMEW ofn;
 
@@ -219,13 +221,13 @@ wstring dialogSaveFile(wstring title, wstring location, wstring_list filters) {
 	ofn.nMaxFileTitle = _MAX_FNAME + _MAX_EXT;
 	ofn.lpstrCustomFilter = NULL;
 	ofn.lpstrDefExt = NULL;
+	if (defaultExt != L".*")
+		ofn.lpstrDefExt = &defaultExt[0];
 
 	if (!GetSaveFileNameW(&ofn))
 		return selFile; // Cancel
 
 	selFile = buf;
-	cout << "filterIndex" << ofn.nFilterIndex << endl;
-
 #else
 
 #endif

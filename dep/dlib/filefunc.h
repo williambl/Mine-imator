@@ -15,7 +15,7 @@
 // Returns whether the given file exists.
 bool fileExists(wstring filename);
 
-// Returns the size of the given file, in bytes (-1 if something went wrong).
+// Returns the size of the given file, in bytes.
 int fileGetSize(wstring filename);
 
 // Returns the name of the file, without the path.
