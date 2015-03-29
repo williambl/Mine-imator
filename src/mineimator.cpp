@@ -45,7 +45,7 @@ int main() {
 
 	wstring_list fn = dialogOpenFile(L"\"My Title\"", L"", formats, true);
 	//wstring fn = dialogSaveFile(L"\"My Title\"", L"", formats);
-	wcout << "fn = " << fn[0]<< endl;
+	wcout << "fn = " << fn[0] << endl;
 
 	Image myImage(fn[0]);
 	cout << myImage.width << "x" << myImage.height << endl;
@@ -59,7 +59,9 @@ int main() {
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 		glEnable(GL_BLEND);
+		glEnable(GL_TEXTURE_2D);
 
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
@@ -68,24 +70,8 @@ int main() {
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 
-		glEnable(GL_TEXTURE_2D);
-		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-		glBindTexture(GL_TEXTURE_2D, myImage.texture);
-		glBegin(GL_QUADS);
-		glColor3d(1, 1, 1);
-		glTexCoord2d(0, 0);
-		glVertex2d(50, 50);
-		glTexCoord2d(1, 0);
-		glVertex2d(width - 50, 50);
-		glTexCoord2d(1, 1);
-		glVertex2d(width - 50, height - 50);
-		glTexCoord2d(0, 1);
-		glVertex2d(50, height - 50);
-		glEnd();
-		glDisable(GL_TEXTURE_2D);
-		glLoadIdentity();
-
-		drawGradient(0, 0, width, height, colorMake(255, 255, 0), 0, 0, 1, 1);
+		//drawImage(&myImage, 0, 0);
+		drawGradient(0, 0, width, height, colorMake(255, 50, 0), 0, 0, 1, 1);
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();

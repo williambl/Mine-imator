@@ -1,8 +1,16 @@
 #pragma once
 #include "../mineimator.h"
 
-// Draws a box at a position with the given dimensions and color.
-// If fill is false, the box is outlined.
+// Draws an image at a position.
+void drawImage(Image *image, int x, int y);
+
+// Draws an image at a position with the given color.
+/*void drawImage(Image *image, int x, int y, int color, double alpha);
+
+// Draws a stretched image at a position with the given color.
+void drawImage(Image *image, int x, int y, int color, double alpha, double xScale, double yScale);*/
+
+// Draws a box at a position with the given dimensions and color. If fill is false, the box is outlined.
 void drawBox(int x, int y, int width, int height, bool fill, int color, double alpha);
 
 // Draws a gradient effect at a position with the given dimensions and color.
