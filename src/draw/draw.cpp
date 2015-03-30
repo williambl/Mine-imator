@@ -29,6 +29,7 @@ void drawImage(Image *image, int x, int y, int color, double alpha, double xScal
 	glVertex2d(x, y + image->height * yScale);
 
 	glEnd();
+	glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 void drawBox(int x, int y, int width, int height, bool fill, int color, double alpha) {

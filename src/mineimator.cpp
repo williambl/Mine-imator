@@ -40,6 +40,8 @@ int main() {
 	formats.push_back(L"*.png");
 	formats.push_back(L"JPG files (*.jpg)");
 	formats.push_back(L"*.jpg;*.jpeg");
+	formats.push_back(L"Bitmap files (*.bmp)");
+	formats.push_back(L"*.bmp");
 	formats.push_back(L"All files (*.*)");
 	formats.push_back(L"*.*");
 
@@ -49,19 +51,24 @@ int main() {
 
 	Image myImage(fn[0]);
 	cout << myImage.width << "x" << myImage.height << endl;
+
+	glEnable(GL_SCISSOR_TEST);
+
+	// Alpha settings
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	// Texture settings
+	glEnable(GL_TEXTURE_2D);
+	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 	
 	while (!glfwWindowShouldClose(window)) {
 		int width, height;
-
 		glfwGetWindowSize(window, &width, &height);
 
 		glViewport(0, 0, width, height);
+		glScissor(0, 0, width, height);
 		glClear(GL_COLOR_BUFFER_BIT);
-
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-		glEnable(GL_BLEND);
-		glEnable(GL_TEXTURE_2D);
 
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
@@ -70,8 +77,18 @@ int main() {
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 
+		drawGradient(0, 0, width, height, colorMake(255, 255, 0), 0, 0, 1, 1);
+
+
+
+		glViewport(100, 100, 200, 200);
+		glScissor(100, 100, 200, 200);
+		glClear(GL_COLOR_BUFFER_BIT);
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(0, 200, 200, 0, 0, 1);
 		drawImage(&myImage, 0, 0);
-		drawGradient(0, 0, width, height, colorMake(255, 50, 0), 0, 0, 1, 1);
+
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
