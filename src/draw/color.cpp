@@ -1,5 +1,3 @@
-#include "color.h"
-
 int colorMake(int r, int g, int b) {
 	return (
 		(r << 24) +

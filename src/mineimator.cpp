@@ -70,7 +70,7 @@ int main() {
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
 
-		//drawImage(&myImage, 0, 0);
+		drawImage(&myImage, 0, 0);
 		drawGradient(0, 0, width, height, colorMake(255, 50, 0), 0, 0, 1, 1);
 
 		glfwSwapBuffers(window);

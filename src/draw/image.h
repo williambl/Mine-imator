@@ -1,5 +1,4 @@
 #pragma once
-#include "../mineimator.h"
 
 class Image {
 public:

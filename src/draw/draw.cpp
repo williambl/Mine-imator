@@ -1,5 +1,5 @@
-#include "draw.h"
-/*
+#include "../mineimator.h"
+
 void drawImage(Image *image, int x, int y) {
 	drawImage(image, x, y, colorMake(255, 255, 255), 1.0, 1.0, 1.0);
 }
@@ -30,7 +30,7 @@ void drawImage(Image *image, int x, int y, int color, double alpha, double xScal
 
 	glEnd();
 }
-*/
+
 void drawBox(int x, int y, int width, int height, bool fill, int color, double alpha) {
 	if (fill)
 		glBegin(GL_QUADS);

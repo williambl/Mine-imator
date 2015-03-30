@@ -1,4 +1,4 @@
-﻿#include "image.h"
+﻿#include "../mineimator.h"
 
 Image::Image(wstring filename) {
 	unsigned char* image = SOIL_load_image(&filename[0], &width, &height, 0, SOIL_LOAD_RGBA);

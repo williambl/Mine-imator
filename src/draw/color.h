@@ -1,6 +1,3 @@
-#pragma once
-#include "../mineimator.h"
-
 // Creates a new color with the given red, green and blue values between 0-255.
 int colorMake(int r, int g, int b);
 

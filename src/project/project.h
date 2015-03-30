@@ -1,1 +1,1 @@
-#include "../mineimator.h"
+#pragma once
