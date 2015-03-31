@@ -10,6 +10,7 @@
 ## Libraries used ##
 
   - [GLFW](http://www.glfw.org) for creating windows, OpenGL contexts and handling input.
+  - [GLEW](http://glew.sourceforge.net) for handling OpenGL extensions.
   - [SOIL](http://www.lonesock.net/soil.html) for loading .png and .jpg images.
   - [Minizip](http://www.winimage.com/zLibDll/minizip.html) for compressing/decompressing archives.
     

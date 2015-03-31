@@ -14,6 +14,12 @@ add_subdirectory("dep/glfw")
 include_directories("dep/glfw/include")
 set(LIBS glfw ${GLFW_LIBRARIES})
 
+# Add GLEW
+include_directories("dep/glew")
+file(GLOB GLEW_SRCS "${CMAKE_SOURCE_DIR}/dep/glew/*.c")
+add_library(glew STATIC ${GLEW_SRCS})
+set(LIBS ${LIBS} glew)
+
 # Add dlib
 include_directories("dep/dlib")
 file(GLOB DLIB_SRCS "${CMAKE_SOURCE_DIR}/dep/dlib/*.cpp")

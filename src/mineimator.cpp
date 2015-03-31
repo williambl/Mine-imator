@@ -32,6 +32,12 @@ int main() {
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(1);
 
+	glewExperimental = GL_TRUE;
+	GLenum err = glewInit();
+
+	if (GLEW_OK != err)
+		fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
+
 	glfwSetKeyCallback(window, keyCallback);
 	glfwSetMouseButtonCallback(window, mouseCallback);
 
@@ -81,13 +87,14 @@ int main() {
 
 
 
-		glViewport(100, 100, 200, 200);
+		/*glViewport(100, 100, 200, 200);
 		glScissor(100, 100, 200, 200);
 		glClear(GL_COLOR_BUFFER_BIT);
 		glMatrixMode(GL_PROJECTION);
 		glLoadIdentity();
 		glOrtho(0, 200, 200, 0, 0, 1);
-		drawImage(&myImage, 0, 0);
+		drawImage(&myImage, 0, 0);*/
+
 
 
 		glfwSwapBuffers(window);

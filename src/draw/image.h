@@ -6,4 +6,6 @@ public:
 	Image(void *data);
 	GLuint texture;
 	int width, height;
+private:
+	void load(void *data);
 };

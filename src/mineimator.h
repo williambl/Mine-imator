@@ -4,8 +4,8 @@
 #include <wchar.h>
 #include <locale.h>
 
+#include <glew.h>
 #include <GLFW/glfw3.h>
-//#include <glew.h>
 #include <SOIL.h>
 #include "dlib.h"
 #include "zlib.h"
