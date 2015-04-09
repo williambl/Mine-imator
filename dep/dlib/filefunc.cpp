@@ -1,18 +1,17 @@
 #include "filefunc.h"
 
-bool fileExists(wstring filename) {
-	wifstream file(filename);
-	return (bool)file;
+bool fileExists(string filename) {
+	wifstream file(filename.c_str());
+    return (bool)file;
 }
 
-int fileGetSize(wstring filename) {
-	wifstream file(filename, ios::binary | ios::ate);
+int fileGetSize(string filename) {
+	wifstream file(filename.c_str(), ios::binary | ios::ate);
 	return file.tellg();
 }
 
 wstring fileGetName(wstring filename) {
 	size_t pos = filename.find_last_of(SLASH);
-
 	if (pos == string::npos)
 		return filename;
 

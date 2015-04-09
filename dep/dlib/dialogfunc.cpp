@@ -2,6 +2,8 @@
 
 #ifndef _WIN32
 
+#define MAX_COMMAND 1024
+
 bool detectEnvironment(string env) {
 	char buf[MAX_COMMAND];
 	string command = "which " + env;
